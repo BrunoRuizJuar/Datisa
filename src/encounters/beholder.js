@@ -1,4 +1,5 @@
 import { kahoot } from '../config/kahoot.js';
+import { kahootLink } from './kahoot-link.js';
 
 export const beholderRoutes = {
   entrance: 'beholder-del-sobreajuste',
@@ -29,27 +30,12 @@ function creature(defeated) {
   </svg>`;
 }
 
-function kahootLink() {
-  const value = kahoot.beholder.url;
-  if (value) {
-    try {
-      const url = new URL(value);
-      if (url.protocol === 'https:' && (url.hostname === 'kahoot.com' || url.hostname.endsWith('.kahoot.com') ||
-          url.hostname === 'kahoot.it' || url.hostname.endsWith('.kahoot.it'))) {
-        const href = url.href.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
-        return `<a class="encounter-action" href="${href}" target="_blank" rel="noopener noreferrer">Abrir Kahoot (otra pestaña) <span aria-hidden="true">↗</span></a>`;
-      }
-    } catch { /* La configuración todavía no contiene un enlace válido. */ }
-  }
-  return '<p class="encounter-status">El enlace de Kahoot está pendiente de configurar.</p>';
-}
-
 export function renderBeholder(route) {
   const { entrance, challenge } = beholderRoutes;
   if (route === challenge) return `<article class="encounter encounter-challenge">
     <h1>Desafío del Beholder</h1>
     <p>Responde ${kahoot.beholder.questions} preguntas sobre clasificación de documentos, aprendizaje supervisado y Naïve Bayes. Al terminar en Kahoot, vuelve a DATISA y pulsa Continuar.</p>
-    ${kahootLink()}
+    ${kahootLink(kahoot.beholder.url)}
     <div class="encounter-links"><a href="#${entrance}">← Volver al encuentro</a><a href="#${beholderRoutes.defeated}">Continuar <span aria-hidden="true">→</span></a></div>
   </article>`;
   if (route === entrance) return `<article class="encounter encounter-entrance">

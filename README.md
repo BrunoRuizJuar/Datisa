@@ -18,19 +18,19 @@ Abre [la portada](http://127.0.0.1:8767/#portada), [Naïve Bayes](http://127.0.0
 - **Fase 2.** Capítulos 4.1 y 4.2, fórmulas con KaTeX y laboratorio de detección de spam.
 - **Fase 3.** Bag of Words, TF-IDF, similitud coseno, k-NN y SVM. Laboratorio vectorial con documento móvil, votación y frontera lineal.
 - **Fase 4.** Beholder del Sobreajuste, entrada animada, pantalla para abrir Kahoot, continuación manual y derrota. El [banco de Kahoot 1](src/encounters/kahoot-beholder.md) contiene diez preguntas con respuestas.
+- **Fase 5.** [Misión 𝕏-smoso](http://127.0.0.1:8767/#4-4-x-smoso) de 20 minutos. Analiza reseñas empresariales mediante filtrado Naïve Bayes, Bag of Words, TF-IDF, agrupación con k-means, clasificación por k-NN y una simulación de RAG que cita fragmentos de un corpus local. El laboratorio se ejecuta en el navegador y no requiere servidor de aplicación, API ni modelo generativo.
+- **Fase 6.** Encuentro de Pal-Integer, desafío final y escena amistosa de victoria. El [banco de Kahoot 2](src/encounters/kahoot-pal-integer.md) contiene 20 preguntas con respuestas.
 - Las nueve lecciones actuales incluyen ilustraciones pastel y explicaciones formales ampliadas. Las 14 ecuaciones llevan una leyenda que explica la función de sus términos por color.
 
 ## Pendientes
 
-- [ ] **Próxima sesión.** Crear o seleccionar el repositorio remoto en GitHub, conectar este repositorio local y activar GitHub Pages. Tras la publicación, comprobar la portada, las rutas directas, los recursos estáticos y los laboratorios bajo el prefijo público.
-- [ ] **Fase 5.** Construir la misión X-smoso de unos 20 minutos. Ilustrar el pipeline de Naïve Bayes, Bag of Words y TF-IDF, agrupación temática con k-means, clasificación supervisada con SVM o k-NN y una respuesta RAG respaldada por evidencia.
-- [ ] **Fase 6.** Crear la introducción narrativa y el encuentro de Pal-Integer, preparar el segundo banco de 20 preguntas y hacer la transición manual a la escena amistosa de victoria.
-- [ ] Cargar ambos cuestionarios en Kahoot y pegar sus URL HTTPS en `src/config/kahoot.js` cuando estén disponibles. Verificar desde el sitio la apertura en otra pestaña y ensayar el regreso manual. El primer banco ya está escrito.
+- [ ] **Publicación.** Activar GitHub Pages en el repositorio de GitHub. Tras la publicación, comprobar la portada, las rutas directas, los recursos estáticos y los laboratorios bajo el prefijo público.
+- [ ] Cargar ambos cuestionarios en Kahoot y pegar sus URL HTTPS en `src/config/kahoot.js` cuando estén disponibles. Verificar desde el sitio la apertura en otra pestaña y ensayar el regreso manual. Ambos bancos ya están escritos.
 - [ ] **Fase 7.** Completar el glosario, la bibliografía y los recursos académicos. Hacer la revisión final de enlaces, navegación, accesibilidad, pantallas pequeñas y proyección. Ensayar el recorrido completo y confirmar su duración.
 
 ## GitHub Pages
 
-Sube los archivos del sitio, incluido `.nojekyll`, a la raíz de la rama `main` del repositorio remoto. En **Settings → Pages**, elige **Deploy from a branch → main → /(root)** y guarda. La URL de una lección tendrá un formato como `https://usuario.github.io/DATISA/#4-1-introduccion`. [Documentación de la fuente de publicación](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+Los archivos del sitio, incluido `.nojekyll`, se publican desde la raíz de la rama `main`. En **Settings → Pages**, elige **Deploy from a branch → main → /(root)** y guarda. La URL de una lección tendrá un formato como `https://usuario.github.io/DATISA/#4-1-introduccion`. [Documentación de la fuente de publicación](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
 ## Organización
 
@@ -38,5 +38,5 @@ Sube los archivos del sitio, incluido `.nojekyll`, a la raíz de la rama `main` 
 - `src/navigation.js` gestiona rutas, índice y preferencias. `src/components/` contiene la plantilla, el renderizado matemático y las ilustraciones.
 - `src/content/` contiene el índice, las lecciones, las explicaciones formales y los datos de las escenas.
 - `src/labs/` contiene los cálculos y las interfaces de los laboratorios.
-- `src/encounters/` contiene las escenas del Beholder y el primer banco de preguntas.
+- `src/encounters/` contiene las escenas del Beholder y Pal-Integer y ambos bancos de preguntas.
 - `assets/katex/` contiene el motor KaTeX 0.16.47 y los estilos y fuentes obtenidos de la instalación de Visual Studio Code, junto con el aviso de licencia.

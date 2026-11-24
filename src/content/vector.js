@@ -56,7 +56,7 @@ export const vector = {
       ['Ejemplo ilustrado', 'Los dos ejes del laboratorio representan intensidades sintéticas de términos de entrega y de facturación. La frontera es x = y y la puntuación canónica es (x − y)/2. E1 y F1 son los soportes: sus coordenadas (6,4) y (4,6) dan puntuaciones +1 y −1. Para (7,3), la puntuación es +2 y la clase es Entrega.'],
       ['Aplicaciones adicionales', 'Un modelo lineal permite inspeccionar qué términos tienen pesos positivos o negativos. La contribución de un término a un documento se obtiene multiplicando su peso por su valor en ese documento.'],
       ['Limitaciones', 'En textos reales las clases pueden solaparse. Una SVM de margen suave permite violaciones del margen. El parámetro C controla cuánto se penalizan, por lo que se elige con validación. Los pesos muestran asociaciones aprendidas en el conjunto de entrenamiento.'],
-      ['Conexión', 'En X-smoso podremos usar una SVM entrenada con reseñas etiquetadas para clasificar tipos de queja.']
+      ['Conexión', 'En 𝕏-smoso usaremos k-NN para enrutar reseñas etiquetadas. Una SVM también puede aprender a clasificar tipos de queja.']
     ],
     source: 'https://nlp.stanford.edu/IR-book/html/htmledition/support-vector-machines-the-linearly-separable-case-1.html',
     sourceLabel: reference + ', cap. 15'

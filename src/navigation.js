@@ -1,7 +1,9 @@
 import { beholderRoutes, renderBeholder } from './encounters/beholder.js';
+import { palIntegerRoutes, renderPalInteger } from './encounters/pal-integer.js';
 import { renderMath } from './components/math.js';
 import { mountBayes } from './labs/bayes.js';
 import { mountVector } from './labs/vector.js';
+import { mountXsmoso } from './labs/x-smoso.js';
 import { sections, sequence, sectionTitle } from './content/sections.js';
 import { renderPage, routeLink } from './components/pages.js';
 
@@ -86,11 +88,13 @@ function showRoute(focus = false) {
     content.focus();
     return;
   }
-  if (Object.values(beholderRoutes).includes(hash)) {
+  const encounter = Object.values(beholderRoutes).includes(hash) ? renderBeholder
+    : Object.values(palIntegerRoutes).includes(hash) ? renderPalInteger : null;
+  if (encounter) {
     if (mobileOpen) closeMobile();
     shell.classList.add('encounter-shell');
     rendered = hash;
-    content.innerHTML = renderBeholder(hash);
+    content.innerHTML = encounter(hash);
     document.title = content.querySelector('h1').textContent + ' · DATISA';
     window.scrollTo(0, 0);
     if (focus) content.focus({ preventScroll: true });
@@ -113,6 +117,8 @@ function display(section) {
   if (bayesLab) mountBayes(bayesLab);
   const vectorLab = content.querySelector('[data-lab="vector"]');
   if (vectorLab) mountVector(vectorLab, section.id === '4-3-2-maquinas-vectores-soporte');
+  const xsmosoLab = content.querySelector('[data-lab="x-smoso"]');
+  if (xsmosoLab) mountXsmoso(xsmosoLab);
   save('section', section.id);
   document.title = section.id === 'portada' ? 'DATISA · Clasificación de documentos' : sectionTitle(section) + ' · DATISA';
   locationLabel.textContent = section.number ? sectionTitle(section) : section.title;

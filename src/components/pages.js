@@ -5,15 +5,17 @@ import { questionIllustrations } from '../content/question-illustrations.js';
 import { problemDiagrams } from '../content/problem-diagrams.js';
 import { renderProblemDiagram } from './problem-diagrams.js';
 import { beholderRoutes } from '../encounters/beholder.js';
+import { palIntegerRoutes } from '../encounters/pal-integer.js';
 import { sectionTitle, sections, sequence } from '../content/sections.js';
 import { introduction } from '../content/introduction.js';
 
 import { foundations } from '../content/foundations.js';
 import { bayes } from '../content/bayes.js';
 import { vector } from '../content/vector.js';
+import { xsmoso } from '../content/x-smoso.js';
 import { formula } from './math.js';
 
-const lessons = { '4-1-introduccion': introduction, ...foundations, ...bayes, ...vector };
+const lessons = { '4-1-introduccion': introduction, ...foundations, ...bayes, ...vector, '4-4-x-smoso': xsmoso };
 
 export const routeLink = section => '#' + section.id;
 const arrow = direction => direction === 'previous' ? '←' : '→';
@@ -67,7 +69,7 @@ function cover(section) {
     </section>
     <section class="activities" aria-labelledby="activities-title">
       <h2 id="activities-title">Durante la clase</h2>
-      <ul><li>Laboratorios interactivos</li><li><a href="#4-4-x-smoso">Proyecto integrador X-smoso</a></li><li>Dos desafíos Kahoot</li></ul>
+      <ul><li>Laboratorios interactivos</li><li><a href="#4-4-x-smoso">Ahora, ¿cómo se vería en el mundo real?</a></li><li>Desafíos Kahoot: <a href="#${beholderRoutes.entrance}">Beholder del Sobreajuste</a> y <a href="#${palIntegerRoutes.entrance}">Pal-Integer</a></li></ul>
     </section>
     ${pageNavigation(section, 'inferior')}
   </div>`;
@@ -102,6 +104,7 @@ function chapter(section) {
       </div>
       ${lesson ? lessonBody(lesson, section.id) : '<p class="pending">El contenido de esta sección se incorporará en una fase posterior.</p>'}
       ${section.id === '4-2-1-naive-bayes' ? `<p class="encounter-invite"><a href="#${beholderRoutes.entrance}">Invocar mini jefe</a></p>` : ''}
+      ${section.id === '4-4-x-smoso' ? `<p class="encounter-invite"><a href="#${palIntegerRoutes.entrance}">Conocer a Pal-Integer</a></p>` : ''}
       ${section.children ? `<ul class="child-links">${section.children.map(child => `<li><a href="${routeLink(child)}">${sectionTitle(child)}</a></li>`).join('')}</ul>` : ''}
     </article>
     ${pageNavigation(section, 'inferior')}

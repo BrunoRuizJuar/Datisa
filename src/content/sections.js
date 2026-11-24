@@ -24,7 +24,7 @@ export const sections = [
       { id: '4-3-2-maquinas-vectores-soporte', number: '4.3.2', title: 'Clasificación basada en máquinas de vectores soporte' }
     ]
   },
-  { id: '4-4-x-smoso', number: '4.4', title: 'Proyecto integrador: X-smoso' },
+  { id: '4-4-x-smoso', number: '4.4', title: 'Ahora, ¿cómo se vería en el mundo real?' },
   { id: 'recursos', title: 'Recursos y bibliografía' }
 ];
 

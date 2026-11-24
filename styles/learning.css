@@ -24,6 +24,27 @@
 .bayes-control output { text-align: right; font: 500 .9rem var(--mono); }
 .lesson-lab button { border: 1px solid var(--border); background: var(--paper); padding: .5rem .75rem; border-radius: .35rem; }
 .lesson-lab button:hover { border-color: var(--muted); }
+
+.xsmoso-lab > section { border-block-start: 1px solid var(--border); margin-block-start: 1.5rem; padding-block-start: 1rem; }
+.xsmoso-lab h2 { margin-block-start: 0; }
+.xsmoso-lab summary { cursor: pointer; font-weight: 600; }
+.xsmoso-lab dd { margin: .15rem 0 .75rem; }
+.xsmoso-lab label { display: block; font-weight: 600; margin-block-end: .25rem; }
+.xsmoso-lab input, .xsmoso-lab select {
+  max-inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: .4rem .6rem;
+  border: 1px solid var(--border);
+  border-radius: .35rem;
+  color: inherit;
+  background: var(--paper);
+  font: inherit;
+}
+.xsmoso-lab input { inline-size: 100%; margin-block-end: .5rem; }
+.xsmoso-lab table { border-collapse: collapse; text-align: start; }
+.xsmoso-lab caption { text-align: start; margin-block-end: .4rem; }
+.xsmoso-lab th, .xsmoso-lab td { padding: .3rem .5rem; border-block-end: 1px solid var(--border); }
+.xsmoso-lab blockquote { margin-inline: 0; padding-inline-start: .75rem; border-inline-start: 3px solid var(--border); }
 .bayes-prediction { margin-block: 1.4rem 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
 .bayes-bar { height: .75rem; background: #d9e8e2; border-radius: .5rem; overflow: hidden; }
 .bayes-bar span { display: block; height: 100%; background: #217453; transition: width .18s ease-out; }
@@ -32,4 +53,47 @@
 .bayes-question { margin-bottom: 0; font-size: .92rem; }
 @media (prefers-reduced-motion: reduce) {
   .bayes-bar span { transition: none; }
+}
+
+
+.xsmoso-figure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .65rem;
+  margin: 1rem 0;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  background: #ece9fa;
+  color: #30224e;
+}
+
+.xsmoso-figure span {
+  background: #fff;
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  font-weight: 700;
+}
+
+.xsmoso-bars {
+  list-style: none;
+  padding-left: 0;
+}
+
+.xsmoso-bars li {
+  display: grid;
+  grid-template-columns: minmax(5rem, 1fr) minmax(4rem, 3fr) 3rem;
+  align-items: center;
+  gap: .5rem;
+}
+
+.xsmoso-bars meter {
+  width: 100%;
+}
+
+.xsmoso-groups > li {
+  margin-block: .5rem;
+  padding: .55rem;
+  border: 1px solid currentColor;
+  border-radius: .5rem;
 }

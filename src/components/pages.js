@@ -77,7 +77,7 @@ function cover(section) {
     </section>
     <section class="activities" aria-labelledby="activities-title">
       <h2 id="activities-title">Durante la clase</h2>
-      <ul><li>Laboratorios interactivos</li><li><a href="#4-4-x-smoso">Ahora, ¿cómo se vería en el mundo real?</a></li><li>Desafíos Kahoot: <a href="#${beholderRoutes.entrance}">Beholder del Sobreajuste</a> y <a href="#${palIntegerRoutes.entrance}">Pal-Integer</a></li></ul>
+      <ul><li>Laboratorios interactivos</li><li><a href="#4-4-x-smoso">Ahora, ¿cómo se vería en el mundo real?</a></li></ul>
     </section>
     ${pageNavigation(section, 'inferior')}
   </div>`;

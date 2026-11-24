@@ -13,20 +13,23 @@ function portrait(friendly) {
   const arms = friendly
     ? 'M195 169 C164 182 141 159 126 141 M201 166 C234 180 258 159 275 137'
     : 'M196 162 C171 172 147 192 151 212 M200 164 C230 175 250 193 247 211';
+  const palette = friendly
+    ? { body: '#c6a6e5', edge: '#efddff', detail: '#44275d', aura: '#352649', notation: '#c1acd3' }
+    : { body: '#a77ad0', edge: '#d9b9f1', detail: '#3b2055', aura: '#2c1b40', notation: '#b89ccf' };
   const face = friendly
     ? '<path class="pal-brows" d="M172 123q7-6 14-2m15 0q7-4 14 2"/><path class="pal-eyes" d="M174 139q6-9 12 0m15 0q6-9 12 0"/><path class="pal-mouth" d="M185 157q9 11 18 0"/>'
     : '<path class="pal-brows" d="m171 124 16 6m13 0 16-6"/><path class="pal-eyes" d="M180 141v3m27-3v3"/><path class="pal-mouth" d="M187 161q6-4 13-2"/>';
-  return `<svg class="pal-art" viewBox="0 0 392 302" role="img" aria-label="${friendly ? 'Pal-Integer sonríe y abre los brazos. Su cuerpo tiene forma de integral.' : 'Pal-Integer, una integral violeta con cejas inclinadas, mira a la clase.'}">
-    <ellipse class="pal-aura" cx="196" cy="152" rx="111" ry="125"/>
-    <g class="pal-notation" aria-hidden="true">
-      <text x="83" y="74">∑</text><text x="288" y="107">p(x)</text>
+  return `<svg class="pal-art" width="392" height="302" style="max-width:100%;height:auto" viewBox="0 0 392 302" role="img" aria-label="${friendly ? 'Pal-Integer sonríe y abre los brazos. Su cuerpo tiene forma de integral.' : 'Pal-Integer, una integral violeta con cejas inclinadas, mira a la clase.'}">
+    <ellipse class="pal-aura" cx="196" cy="152" rx="111" ry="125" fill="${palette.aura}"/>
+    <g class="pal-notation" fill="${palette.notation}" font-family="monospace" font-size="12" aria-hidden="true">
+      <text x="83" y="74" font-size="18">∑</text><text x="288" y="107">p(x)</text>
       <text x="271" y="245">wᵀx+b</text>
     </g>
-    <g class="pal-pose">
-      <path class="pal-arms" d="${arms}"/>
-      <path class="pal-edge" d="${integral}"/>
-      <path class="pal-integral" d="${integral}"/>
-      <g class="pal-expression">${face}</g>
+    <g class="pal-pose" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path class="pal-arms" d="${arms}" stroke="${palette.body}" stroke-width="8"/>
+      <path class="pal-edge" d="${integral}" stroke="${palette.edge}" stroke-width="54"/>
+      <path class="pal-integral" d="${integral}" stroke="${palette.body}" stroke-width="50"/>
+      <g class="pal-expression" stroke="${palette.detail}" stroke-width="3.5">${face}</g>
     </g>
   </svg>`;
 }

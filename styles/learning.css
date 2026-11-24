@@ -1,0 +1,35 @@
+.formula {
+  margin-top: .75rem;
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  font-weight: 500;
+}
+.formula .katex-display { margin: .35em 0; }
+.math-key { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: .55rem; margin: .8rem 0 1.3rem; }
+.math-key > div { border: 1px solid var(--border); border-radius: .35rem; padding: .55rem .65rem; }
+.math-key dt { border-inline-start: 2px solid currentColor; padding-inline-start: .42rem; font: 600 .88rem/1.5 var(--mono); }
+.math-key dd { margin: .28rem 0 0; font-size: .91rem; line-height: 1.45; }
+.math-prior { color: #285f91; }
+.math-evidence { color: #8a561c; }
+.math-result { color: #217453; }
+.math-parameter { color: #704995; }
+
+.lesson-lab { margin: 2.5rem 0 1.75rem; padding: clamp(1rem, 4vw, 2rem); border: 1px solid var(--border); border-radius: .6rem; background: var(--soft); }
+.lesson-lab p { max-width: 64ch; }
+.bayes-controls { display: grid; gap: .85rem; margin-block: 1.2rem; }
+.bayes-control label { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; font-weight: 600; }
+.bayes-control code { font: .85rem var(--mono); }
+.bayes-control > div { display: grid; grid-template-columns: minmax(0, 1fr) 5ch; gap: .8rem; align-items: center; }
+.bayes-control input { width: 100%; margin: 0; min-height: 30px; cursor: pointer; accent-color: #8a561c; }
+.bayes-control input[name="prior"] { accent-color: #285f91; }
+.bayes-control output { text-align: right; font: 500 .9rem var(--mono); }
+.lesson-lab button { border: 1px solid var(--border); background: var(--paper); padding: .5rem .75rem; border-radius: .35rem; }
+.lesson-lab button:hover { border-color: var(--muted); }
+.bayes-prediction { margin-block: 1.4rem 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.bayes-bar { height: .75rem; background: #d9e8e2; border-radius: .5rem; overflow: hidden; }
+.bayes-bar span { display: block; height: 100%; background: #217453; transition: width .18s ease-out; }
+.bayes-result { display: grid; gap: .15rem; margin-block: .6rem; }
+.bayes-result strong { color: #217453; }
+.bayes-question { margin-bottom: 0; font-size: .92rem; }
+@media (prefers-reduced-motion: reduce) {
+  .bayes-bar span { transition: none; }
+}

@@ -1,0 +1,31 @@
+.vector-lab { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(.8rem, 3vw, 1.6rem); align-items: center; }
+.vector-lab figure { margin: 0; min-width: 0; }
+.vector-plot { display: block; width: 100%; background: var(--paper); border: 1px solid var(--border); border-radius: .35rem; cursor: crosshair; touch-action: none; }
+.vector-plot text { fill: var(--ink); font: 10px var(--mono); }
+.vector-grid { stroke: var(--border); }
+.vector-axis { stroke: #70757a; }
+.vector-delivery { fill: #285f91; background: #285f91; border-radius: 50%; }
+.vector-billing { fill: #8a561c; background: #8a561c; }
+.vector-query circle, .vector-query-key { fill: #217453; background: #217453; border-radius: 50%; }
+.vector-query path { stroke: var(--paper); stroke-width: 1.5; }
+.vector-neighbor { stroke: #217453; stroke-width: 1.5; }
+.vector-boundary, .vector-margin, .vector-support { stroke: #704995; fill: none; }
+.vector-boundary { stroke-width: 2; }
+.vector-margin { stroke-dasharray: 5 4; }
+.vector-legend { display: flex; flex-wrap: wrap; gap: .25rem .7rem; margin-top: .55rem; font-size: .82rem; }
+.vector-legend i { display: inline-block; width: .65rem; height: .65rem; }
+.vector-svm-key i { height: .17rem; background: #704995; vertical-align: middle; }
+.vector-controls { display: grid; gap: .95rem; }
+.vector-controls button { justify-self: start; }
+.vector-k { display: flex; align-items: center; gap: .6rem; }
+.vector-k select { padding: .3rem .5rem; border: 1px solid var(--muted); border-radius: .3rem; background: var(--paper); color: var(--ink); font: inherit; }
+.vector-checkbox { display: flex; align-items: baseline; gap: .35rem; }
+.vector-checkbox input { accent-color: #704995; }
+.vector-controls input[name="x"] { accent-color: #285f91; }
+.vector-results { margin-top: 1.45rem; border-top: 1px solid var(--border); }
+.vector-results p { margin: .7rem 0; }
+.vector-neighbor-label { white-space: nowrap; }
+@media (max-width: 1100px) and (min-width: 801px), (max-width: 620px) {
+  .vector-lab { grid-template-columns: minmax(0, 1fr); }
+  .vector-lab figure { width: min(100%, 420px); }
+}

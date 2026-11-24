@@ -1,0 +1,35 @@
+.problem-illustration {
+  margin: clamp(1.75rem, 4vw, 3.5rem) 0;
+  background: #f7f7f8;
+  border-radius: .7rem;
+  overflow: hidden;
+}
+.problem-illustration svg { display: block; width: 100%; height: auto; }
+.art-blue { fill: #e7f1fa; stroke: #7898b4; }
+.art-purple { fill: #ede2f6; stroke: #9e82b8; }
+.art-green { fill: #e4f2e9; stroke: #79a28d; }
+.art-cream { fill: #f8ebdc; stroke: #bb9470; }
+.art-gray { fill: #fff; stroke: #c0c3cb; }
+.art-ground { fill: #ececf0; }
+.art-lines, .art-handle, .art-question { fill: none; stroke-linecap: round; }
+.art-lines { stroke: #8c909a; stroke-width: 2.6; }
+
+.art-handle { stroke: #a9805b; stroke-width: 7; }
+.art-question { stroke: #644682; stroke-width: 4; }
+.problem-illustration text { fill: #202124; stroke: none; font: 700 17px var(--sans); }
+.problem-illustration .art-word { fill: #644682; font: 600 23px var(--serif); }
+
+@media (max-width: 560px) {
+  .problem-illustration { padding-block: .65rem; }
+}
+.art-glass { fill-opacity: .62; }
+.problem-illustration .art-offer-label { font-size: 17px; }
+
+.art-branch, .art-candidate { fill: none; stroke-linecap: round; }
+.art-branch { stroke: #a58367; stroke-width: 3; }
+.art-candidate { stroke: #9e82b8; stroke-width: 2; stroke-dasharray: 5 5; }
+.problem-illustration .art-small-word { font-size: 16px; }
+.art-boundary, .art-ray-blue, .art-ray-orange { fill: none; stroke-linecap: round; }
+.art-boundary { stroke: #9e82b8; stroke-width: 2.5; }
+.art-ray-blue { stroke: #397cb5; stroke-width: 2.75; }
+.art-ray-orange { stroke: #bb9470; stroke-width: 2.75; }

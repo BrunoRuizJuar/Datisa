@@ -1,0 +1,46 @@
+body:has(.encounter-shell) { background: #160e22; }
+body:has(.encounter-shell) .top, body:has(.encounter-shell) .footer,
+.encounter-shell > #sidebar, .encounter-shell > .backdrop { display: none; }
+.shell.encounter-shell { display: block; min-height: 100dvh; }
+.encounter-shell main { padding: 0; }
+.encounter {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1.5rem, 6vw, 4rem);
+  background: #160e22;
+  color: #f8f5fc;
+  text-align: center;
+  animation: encounter-in .55s ease-out both;
+}
+.encounter h1 { max-width: 16ch; font-size: clamp(2rem, 6.5vw, 5.4rem); }
+.encounter-challenge h1 { max-width: 20ch; }
+.encounter p { max-width: 53ch; margin: 1rem 0; color: #e1d3ef; }
+.encounter a { color: #eedcff; }
+.encounter a:focus-visible { outline-color: #d9baff; }
+.encounter .encounter-action { font-weight: 700; margin-top: .45rem; }
+.encounter .encounter-back { margin-top: 1.3rem; font-size: .92rem; }
+.encounter .encounter-status { border: 1px solid #765d8c; padding: .5rem .85rem; border-radius: .35rem; }
+.encounter-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .65rem 2rem; margin-top: 1.25rem; }
+.beholder-art { width: min(100%, 350px); display: block; overflow: visible; }
+.beholder-float { transform-origin: center; animation: beholder-float 3.5s ease-in-out; }
+.encounter-defeated .beholder-float { animation: beholder-fall .85s ease-out both; }
+.beholder-stalk { fill: none; stroke: #946bc2; stroke-width: 14; stroke-linecap: round; }
+.beholder-small-eyes, .beholder-eye { fill: #eadbfa; stroke: #563773; stroke-width: 4; }
+.beholder-pupils { stroke: #3b2055; stroke-width: 10; stroke-linecap: round; }
+.beholder-body { fill: #946bc2; stroke: #bd9cdd; stroke-width: 3; }
+.beholder-body-detail, .beholder-brow, .beholder-closed, .beholder-sparks { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-width: 6; }
+.beholder-body-detail { stroke: #754d9f; }
+.beholder-brow, .beholder-closed { stroke: #3b2055; }
+.beholder-sparks { stroke: #e7daf7; stroke-width: 3; }
+.beholder-iris { fill: #3b2055; }
+.beholder-highlight { fill: #fff; }
+@keyframes encounter-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes beholder-float { from { transform: translateY(-42px) scale(.77); } 25% { transform: translateY(7px) scale(1.04); } 60% { transform: translateY(-11px); } to { transform: none; } }
+@keyframes beholder-fall { from { transform: translateY(-34px) rotate(-7deg); } 65% { transform: translateY(12px) rotate(6deg); } to { transform: translateY(5px) rotate(3deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .encounter, .encounter .beholder-float { animation: none; }
+}
+.encounter-invite { margin: 2rem 0 0; font-size: .9rem; }

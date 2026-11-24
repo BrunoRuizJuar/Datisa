@@ -46,50 +46,87 @@ body:has(.encounter-shell) .top, body:has(.encounter-shell) .footer,
 .encounter-invite { margin: 2rem 0 0; font-size: .9rem; }
 
 .pal-encounter {
-  background: radial-gradient(ellipse at 50% 12%, #3a3563, #1b182d 65%);
-  color: #fff;
+  background: #1a1228;
 }
 
-.pal-portrait {
-  display: grid;
-  justify-items: center;
-  gap: .9rem;
-  width: min(10rem, 75%);
-  padding: 1.2rem 0;
-  margin: 0 auto 1.5rem;
-  border: .2rem solid #e9d6ff;
-  border-radius: 2rem;
-  background: #a58bdb;
-  color: #262043;
-  box-shadow: 0 .5rem 0 #624989;
+.pal-scene {
+  --pal-body: #a77ad0;
+  --pal-edge: #d9b9f1;
+  --pal-detail: #3b2055;
+  --pal-aura: #2c1b40;
+  --pal-notation: #b89ccf;
+  padding: clamp(1.25rem, 5vw, 3rem);
 }
 
-.pal-symbol {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: 1;
+.pal-scene--victory {
+  --pal-body: #c6a6e5;
+  --pal-edge: #efddff;
+  --pal-detail: #44275d;
+  --pal-aura: #352649;
+  --pal-notation: #c1acd3;
+  background: #21182f;
 }
 
-.pal-eyes {
-  display: flex;
-  gap: 1.5rem;
+.pal-art {
+  display: block;
+  width: min(100%, clamp(14rem, 46vh, 24.5rem));
+  height: auto;
+  margin-block-end: .35rem;
 }
 
-.pal-eyes i {
-  width: .8rem;
-  height: 1rem;
-  background: currentColor;
-  border-radius: 50%;
+.pal-aura { fill: var(--pal-aura); transform-origin: 50% 50%; }
+.pal-notation { fill: var(--pal-notation); font: 400 12px var(--mono); }
+.pal-notation text:first-child { font-size: 18px; }
+.pal-pose { transform-origin: 50% 50%; }
+.pal-arms, .pal-edge, .pal-integral, .pal-expression {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.pal-arms { stroke: var(--pal-body); stroke-width: 8; }
+.pal-edge { stroke: var(--pal-edge); stroke-width: 54; }
+.pal-integral { stroke: var(--pal-body); stroke-width: 50; }
+.pal-expression { stroke: var(--pal-detail); stroke-width: 3.5; }
+.pal-eyes { stroke-width: 4.5; }
+
+.pal-scene .pal-name {
+  margin: .25rem 0 .55rem;
+  color: #dfc7f3;
+  font: 500 .875rem/1.4 var(--mono);
+  letter-spacing: .16em;
 }
 
-.pal-mouth {
-  width: 2rem;
-  border-top: .2rem solid currentColor;
+.pal-scene h1 {
+  max-width: 24ch;
+  margin: 0;
+  font-size: clamp(1.7rem, 5.2vw, 4.2rem);
+  line-height: 1.05;
+  text-wrap: balance;
 }
+.pal-scene--victory h1 { max-width: 19ch; }
+.pal-scene .pal-affection { color: #f3e4ff; font-weight: 700; }
+.pal-scene .encounter-action, .pal-scene .encounter-back a { display: inline-block; padding: .4rem .15rem; }
+.pal-scene .encounter-back { margin-block: .3rem 0; }
 
-.pal-smile {
-  height: .9rem;
-  border: .2rem solid currentColor;
-  border-top: 0;
-  border-radius: 0 0 1rem 1rem;
+@media (prefers-reduced-motion: no-preference) {
+  .pal-scene--challenge .pal-pose { animation: pal-settle 1.1s ease-out both; }
+  .pal-scene--victory .pal-pose { animation: pal-release .8s ease-out both; }
+  .pal-scene--victory .pal-aura { animation: pal-aura-open .9s ease-out both; }
+  .pal-scene--victory .pal-expression { animation: pal-expression-in .55s .15s ease-out both; }
+}
+@keyframes pal-settle {
+  from { transform: translateY(8px); }
+  to { transform: translateY(0); }
+}
+@keyframes pal-release {
+  from { transform: rotate(-4deg) translateY(6px); }
+  to { transform: none; }
+}
+@keyframes pal-aura-open {
+  from { opacity: .4; transform: scale(.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pal-expression-in {
+  from { opacity: .25; }
+  to { opacity: 1; }
 }

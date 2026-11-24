@@ -42,6 +42,7 @@ export function renderBeholder(route) {
     ${creature(false)}
     <h1>¡EL BEHOLDER DEL SOBREAJUSTE!</h1>
     <p>Memoricé cada correo de entrenamiento. ¿Pueden explicar qué pasará con uno que jamás he visto?</p>
+    <p><a href="#4-1-1-aprendizaje-automatico">Explorar el error en entrenamiento y prueba</a></p>
     <a class="encounter-action" href="#${challenge}">Enfrentar desafío <span aria-hidden="true">→</span></a>
     <p class="encounter-back"><a href="${previous}">← Volver a Naïve Bayes</a></p>
   </article>`;

@@ -25,7 +25,7 @@ export const vector = {
       ['Pregunta detonadora', 'Si un mensaje repite el mismo texto dos veces, ¿debería ser menos parecido a su versión original?'],
       ['¿Cómo podríamos resolverlo?', 'Calculamos una representación común y ordenamos los ejemplos por distancia euclídea ascendente o por similitud coseno descendente. Elegimos el criterio al evaluar el clasificador.'],
       ['Idea intuitiva', 'La distancia euclídea mide cuán separados están los puntos. El coseno compara su dirección y es insensible a multiplicar un vector por una constante positiva.'],
-      ['Explicación formal', 'Elegimos k documentos etiquetados y cada uno emite un voto. El laboratorio usa distancia euclídea, desempata distancias por identificador y señala los empates de votos. Para datos reales, elegimos k con validación y evaluamos al final con datos reservados.'],
+      ['Explicación formal', 'Elegimos k documentos etiquetados y cada uno emite un voto. El laboratorio compara la distancia euclídea con Manhattan, que suma las diferencias absolutas por eje. Desempata distancias por identificador y señala los empates de votos. Elegimos k con validación y evaluamos al final con datos reservados.'],
       ['Medir la cercanía', 'La norma es la longitud de un vector. Al dividir el producto punto por ambas longitudes obtenemos la similitud coseno para dos vectores no nulos. En vectores de norma uno, ordenar por coseno equivale a ordenar por distancia euclídea ascendente.', {
         tex: String.raw`\textcolor{#217453}{\cos(\theta)}=\frac{\textcolor{#285f91}{\mathbf A}\cdot\textcolor{#8a561c}{\mathbf B}}{\textcolor{#704995}{\|\mathbf A\|\|\mathbf B\|}}`,
         plain: 'cos(θ) = (A · B) / (‖A‖ × ‖B‖).',
@@ -53,7 +53,7 @@ export const vector = {
         plain: 's(x) = wᵀx + b.',
         terms: [['prior','x','Vector del documento. Cada rasgo contribuye en proporción a su valor y al peso correspondiente.'],['parameter','wᵀ','Vector de pesos transpuesto para formar el producto punto. w es normal al hiperplano.'],['parameter','b','Sesgo que desplaza la frontera con respecto al origen.'],['result','s(x)','Puntuación de decisión. Su signo determina el lado y el valor cero sitúa el punto en la frontera.']]
       }],
-      ['Ejemplo ilustrado', 'Los dos ejes del laboratorio representan intensidades sintéticas de términos de entrega y de facturación. La frontera es x = y y la puntuación canónica es (x − y)/2. E1 y F1 son los soportes: sus coordenadas (6,4) y (4,6) dan puntuaciones +1 y −1. Para (7,3), la puntuación es +2 y la clase es Entrega.'],
+      ['Ejemplo ilustrado', 'En los datos iniciales, la frontera es x = y y la puntuación canónica es (x − y)/2. E1 y F1 son los soportes: sus coordenadas (6,4) y (4,6) dan puntuaciones +1 y −1. Para (7,3), la puntuación es +2 y la clase es Entrega. Al editar los datos el laboratorio recalcula la frontera.'],
       ['Aplicaciones adicionales', 'Un modelo lineal permite inspeccionar qué términos tienen pesos positivos o negativos. La contribución de un término a un documento se obtiene multiplicando su peso por su valor en ese documento.'],
       ['Limitaciones', 'En textos reales las clases pueden solaparse. Una SVM de margen suave permite violaciones del margen. El parámetro C controla cuánto se penalizan, por lo que se elige con validación. Los pesos muestran asociaciones aprendidas en el conjunto de entrenamiento.'],
       ['Conexión', 'En 𝕏-smoso usaremos k-NN para enrutar reseñas etiquetadas. Una SVM también puede aprender a clasificar tipos de queja.']

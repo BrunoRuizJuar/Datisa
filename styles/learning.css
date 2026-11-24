@@ -5,7 +5,7 @@
 }
 .formula .katex-display { margin: .35em 0; }
 .math-key { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); gap: .55rem; margin: .8rem 0 1.3rem; }
-.math-key > div { border: 1px solid var(--border); border-radius: .35rem; padding: .55rem .65rem; }
+.math-key > div { border-block-start: 1px solid var(--border); padding: .55rem 0; }
 .math-key dt { border-inline-start: 2px solid currentColor; padding-inline-start: .42rem; font: 600 .88rem/1.5 var(--mono); }
 .math-key dd { margin: .28rem 0 0; font-size: .91rem; line-height: 1.45; }
 .math-prior { color: #285f91; }
@@ -13,7 +13,26 @@
 .math-result { color: #217453; }
 .math-parameter { color: #704995; }
 
-.lesson-lab { margin: 2.5rem 0 1.75rem; padding: clamp(1rem, 4vw, 2rem); border: 1px solid var(--border); border-radius: .6rem; background: var(--soft); }
+.lesson-lab { margin: 3rem 0 2rem; padding: clamp(1rem, 4vw, 2rem); border-block: 1px solid var(--border); background: #fafafa; }
+
+.experiment-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr)); gap: .8rem; margin-block: 1rem; }
+.experiment-controls label { display: grid; align-content: start; gap: .25rem; font-weight: 600; }
+.experiment-controls input, .experiment-controls textarea, .experiment-controls select, .lesson-lab textarea { min-width: 0; max-width: 100%; padding: .4rem; font: inherit; color: inherit; background: white; border: 1px solid #70757a; border-radius: .25rem; }
+.experiment-controls input[type=range] { width: 100%; padding: 0; }
+.experiment-table { width: 100%; border-collapse: collapse; }
+.experiment-table th, .experiment-table td { text-align: start; padding: .45rem .3rem; border-block-end: 1px solid var(--border); }
+.experiment-scroll { overflow-x: auto; }
+.experiment-plot { display: block; width: 100%; max-width: 35rem; margin: 1rem auto; background: #fff; }
+.experiment-plot[data-draggable] { touch-action: none; cursor: grab; }
+.experiment-plot[data-draggable] { max-width: 27rem; }
+.experiment-plot text { font: 12px var(--mono); fill: #202124; }
+.experiment-explanation { margin-block: 1rem; }
+.experiment-explanation summary { cursor: pointer; font-weight: 600; }
+.experiment-token { overflow-wrap: anywhere; }
+.experiment-token mark { background: #f6e6d2; color: #202124; font-weight: 700; }
+.experiment-table meter { max-width: 100%; }
+.experiment-controls :focus-visible, .experiment-scroll:focus-visible { outline: 2px solid #285f91; outline-offset: 2px; }
+.formula .katex-display { overflow-x: auto; overflow-y: hidden; }
 .lesson-lab p { max-width: 64ch; }
 .bayes-controls { display: grid; gap: .85rem; margin-block: 1.2rem; }
 .bayes-control label { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; font-weight: 600; }
@@ -82,10 +101,14 @@
 
 .xsmoso-bars li {
   display: grid;
-  grid-template-columns: minmax(5rem, 1fr) minmax(4rem, 3fr) 3rem;
+  grid-template-columns: minmax(4rem, 1fr) minmax(2rem, 2fr) minmax(5rem, 1fr);
   align-items: center;
   gap: .5rem;
 }
+.xsmoso-lab textarea { width: 100%; }
+.xsmoso-lab select + label, .xsmoso-lab textarea + label { margin-block-start: .75rem; }
+.xsmoso-figure { background: transparent; padding: .5rem 0; }
+.xsmoso-figure span { background: transparent; padding: 0; }
 
 .xsmoso-bars meter {
   width: 100%;

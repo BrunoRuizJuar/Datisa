@@ -1,7 +1,5 @@
 import { formalEquations } from '../content/formal-equations.js';
 import { formalExplanations } from '../content/formal-explanations.js';
-import { lessonIllustrations } from '../content/lesson-illustrations.js';
-import { questionIllustrations } from '../content/question-illustrations.js';
 import { problemDiagrams } from '../content/problem-diagrams.js';
 import { renderProblemDiagram } from './problem-diagrams.js';
 import { beholderRoutes } from '../encounters/beholder.js';
@@ -14,8 +12,18 @@ import { bayes } from '../content/bayes.js';
 import { vector } from '../content/vector.js';
 import { xsmoso } from '../content/x-smoso.js';
 import { formula } from './math.js';
+import { activities, resources } from '../content/activities.js';
+import { explanation } from '../labs/experiment-ui.js';
 
-const lessons = { '4-1-introduccion': introduction, ...foundations, ...bayes, ...vector, '4-4-x-smoso': xsmoso };
+const lessons = { '4-1-introduccion': introduction, ...foundations, ...bayes, ...vector, '4-4-x-smoso': xsmoso, recursos: resources };
+const supplementalLabs = {
+  '4-1-1-aprendizaje-automatico': 'generalization',
+  '4-1-2-aprendizaje-supervisado': 'labels',
+  '4-1-3-clasificacion-automatica': 'confusion',
+  '4-2-1-naive-bayes': 'word-bayes',
+  '4-2-clasificacion-probabilistica': 'bayes',
+  '4-3-espacios-vectoriales': 'tfidf'
+};
 
 export const routeLink = section => '#' + section.id;
 const arrow = direction => direction === 'previous' ? '←' : '→';
@@ -76,19 +84,19 @@ function cover(section) {
 }
 
 function lessonBody(lesson, sectionId) {
-  const openingIllustrations = [problemDiagrams[sectionId], questionIllustrations[sectionId]];
   const formal = formalExplanations[sectionId];
   return lesson.blocks.map(([heading, copy, math], index) => {
     const isFormal = formal?.heading === heading;
     const equation = math ?? (isFormal ? formalEquations[sectionId] : undefined);
-    const illustration = !equation && !isFormal && (openingIllustrations[index] ?? lessonIllustrations[sectionId]?.[heading]);
+    const illustration = index === 0 && !equation && problemDiagrams[sectionId];
     return `<section class="lesson-block${index === 1 ? ' prompt' : ''}">
       <h2>${heading}</h2>
       <p>${copy}</p>
       ${isFormal ? formal.paragraphs.map(paragraph => `<p>${paragraph}</p>`).join('') : ''}
       ${equation ? formula(equation) : ''}
     </section>${illustration ? renderProblemDiagram(illustration) : ''}`;
-  }).join('') + (lesson.lab ? `<section class="lesson-lab" data-lab="${lesson.lab}"></section>` : '') +
+  }).join('') + [lesson.lab, supplementalLabs[sectionId]].filter(Boolean).map(lab => `<section class="lesson-lab" data-lab="${lab}"></section>`).join('') +
+    (activities[sectionId] ? `<section class="lesson-block"><h2>Comprueba tu hipótesis</h2>${explanation(...activities[sectionId])}</section>` : '') +
     (lesson.source ? `<p class="reference"><a href="${lesson.source}">${lesson.sourceLabel ?? 'Manning, Raghavan y Schütze · Introduction to Information Retrieval, cap. 13'}</a></p>` : '');
 }
 function chapter(section) {
@@ -104,6 +112,7 @@ function chapter(section) {
       </div>
       ${lesson ? lessonBody(lesson, section.id) : '<p class="pending">El contenido de esta sección se incorporará en una fase posterior.</p>'}
       ${section.id === '4-2-1-naive-bayes' ? `<p class="encounter-invite"><a href="#${beholderRoutes.entrance}">Invocar mini jefe</a></p>` : ''}
+      ${section.id === '4-1-1-aprendizaje-automatico' ? `<p><a href="#${beholderRoutes.entrance}">Pon a prueba tu intuición con el Beholder del Sobreajuste →</a></p>` : ''}
       ${section.id === '4-4-x-smoso' ? `<p class="encounter-invite"><a href="#${palIntegerRoutes.entrance}">Conocer a Pal-Integer</a></p>` : ''}
       ${section.children ? `<ul class="child-links">${section.children.map(child => `<li><a href="${routeLink(child)}">${sectionTitle(child)}</a></li>`).join('')}</ul>` : ''}
     </article>

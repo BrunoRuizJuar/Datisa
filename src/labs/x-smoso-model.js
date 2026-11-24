@@ -72,7 +72,7 @@ export function textIndex(documents) {
     cluster(k) {
       const points = vectors.map(vector => {
         const norm = Math.hypot(...vector);
-        return vector.map(weight => weight / norm);
+        return vector.map(weight => norm ? weight / norm : 0);
       });
       let centers = [points[0]];
       const distance = (a, b) => a.reduce((sum, value, i) => sum + (value - b[i]) ** 2, 0);
@@ -95,6 +95,8 @@ export function textIndex(documents) {
         });
       }
       return centers.map((center, group) => ({
+        centroid: vocabulary.map((word, i) => ({ word, weight: center[i] })).filter(term => term.weight > 0)
+          .sort((a, b) => b.weight - a.weight),
         keywords: vocabulary.map((word, i) => ({ word, weight: center[i] }))
           .filter(term => term.weight > 0).sort((a, b) => b.weight - a.weight).slice(0, 3).map(term => term.word),
         members: documents.filter((_, index) => assignments[index] === group)

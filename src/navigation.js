@@ -2,7 +2,8 @@ import { beholderRoutes, renderBeholder } from './encounters/beholder.js';
 import { palIntegerRoutes, renderPalInteger } from './encounters/pal-integer.js';
 import { renderMath } from './components/math.js';
 import { mountBayes } from './labs/bayes.js';
-import { mountVector } from './labs/vector.js';
+import { mountGeometry } from './labs/geometry.js';
+import { mountWordBayes, mountTfidf, mountConfusion, mountGeneralization, mountLabels } from './labs/experiments.js';
 import { mountXsmoso } from './labs/x-smoso.js';
 import { sections, sequence, sectionTitle } from './content/sections.js';
 import { renderPage, routeLink } from './components/pages.js';
@@ -64,6 +65,7 @@ menu.addEventListener('click', () => {
     save('sidebar', desktopOpen ? 'open' : 'closed');
   }
   updateSidebar();
+  if (mobileOpen) (index.querySelector('[aria-current="page"]') ?? index.querySelector('a')).focus();
 });
 backdrop.addEventListener('click', () => closeMobile(true));
 document.addEventListener('keydown', event => {
@@ -116,7 +118,9 @@ function display(section) {
   const bayesLab = content.querySelector('[data-lab="bayes"]');
   if (bayesLab) mountBayes(bayesLab);
   const vectorLab = content.querySelector('[data-lab="vector"]');
-  if (vectorLab) mountVector(vectorLab, section.id === '4-3-2-maquinas-vectores-soporte');
+  if (vectorLab) mountGeometry(vectorLab, section.id === '4-3-2-maquinas-vectores-soporte');
+  const experiments = { 'word-bayes': mountWordBayes, tfidf: mountTfidf, confusion: mountConfusion, generalization: mountGeneralization, labels: mountLabels };
+  for (const element of content.querySelectorAll('[data-lab]')) experiments[element.dataset.lab]?.(element);
   const xsmosoLab = content.querySelector('[data-lab="x-smoso"]');
   if (xsmosoLab) mountXsmoso(xsmosoLab);
   save('section', section.id);

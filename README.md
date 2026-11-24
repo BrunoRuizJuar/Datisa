@@ -20,13 +20,19 @@ Abre [la portada](http://127.0.0.1:8767/#portada), [Naïve Bayes](http://127.0.0
 - **Fase 4.** Beholder del Sobreajuste, entrada animada, pantalla para abrir Kahoot, continuación manual y derrota. El [banco de Kahoot 1](src/encounters/kahoot-beholder.md) contiene diez preguntas con respuestas.
 - **Fase 5.** [Misión 𝕏-smoso](http://127.0.0.1:8767/#4-4-x-smoso) de 20 minutos. Analiza reseñas empresariales mediante filtrado Naïve Bayes, Bag of Words, TF-IDF, agrupación con k-means, clasificación por k-NN y una simulación de RAG que cita fragmentos de un corpus local. El laboratorio se ejecuta en el navegador y no requiere servidor de aplicación, API ni modelo generativo.
 - **Fase 6.** Encuentro de Pal-Integer, desafío final y escena amistosa de victoria. El [banco de Kahoot 2](src/encounters/kahoot-pal-integer.md) contiene 20 preguntas con respuestas.
-- Las nueve lecciones actuales incluyen ilustraciones pastel y explicaciones formales ampliadas. Las 14 ecuaciones llevan una leyenda que explica la función de sus términos por color.
+- **DATISA 2.0.** Las lecciones incluyen experimentos de generalización, suavizado de Laplace, TF-IDF, k-NN, SVM y matriz de confusión. Las actividades de comprobación permiten revelar la explicación después de formular una hipótesis.
 
 ## Pendientes
 
 - [ ] **Publicación.** Activar GitHub Pages en el repositorio de GitHub. Tras la publicación, comprobar la portada, las rutas directas, los recursos estáticos y los laboratorios bajo el prefijo público.
 - [ ] Cargar ambos cuestionarios en Kahoot y pegar sus URL HTTPS en `src/config/kahoot.js` cuando estén disponibles. Verificar desde el sitio la apertura en otra pestaña y ensayar el regreso manual. Ambos bancos ya están escritos.
-- [ ] **Fase 7.** Completar el glosario, la bibliografía y los recursos académicos. Hacer la revisión final de enlaces, navegación, accesibilidad, pantallas pequeñas y proyección. Ensayar el recorrido completo y confirmar su duración.
+- [ ] Ensayar el recorrido completo en clase y confirmar su duración. La auditoría registra las comprobaciones pendientes de accesibilidad y enlaces externos.
+
+## Validación local
+
+Con Node.js 22 o posterior, ejecuta `node --test tests/math.test.mjs` para verificar los cálculos. En Windows con Microsoft Edge, `node tests/browser.mjs` ejecuta la prueba en navegador y actualiza las capturas. Si Edge está en otra ubicación, define `DATISA_BROWSER` con la ruta de su ejecutable.
+
+Consulta el diagnóstico, los resultados y las capturas en la [auditoría de DATISA 2.0](docs/AUDITORIA_DATISA_2.md).
 
 ## GitHub Pages
 

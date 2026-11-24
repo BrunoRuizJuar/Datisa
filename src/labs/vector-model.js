@@ -12,12 +12,14 @@ export const documents = [
 
 export const groups = { E: 'Entrega', F: 'Facturación' };
 
-export function vote(query, k) {
-  const neighbors = documents.map(doc => {
+export function vote(query, k, training = documents, metric = 'euclidean') {
+  const neighbors = training.map(doc => {
     const dx = Math.round(doc.x * 10) - Math.round(query.x * 10);
     const dy = Math.round(doc.y * 10) - Math.round(query.y * 10);
-    return { ...doc, distanceSquared: dx ** 2 + dy ** 2 };
-  }).sort((a, b) => a.distanceSquared - b.distanceSquared || a.id.localeCompare(b.id))
+    const distanceSquared = dx ** 2 + dy ** 2;
+    const distance = metric === 'manhattan' ? (Math.abs(dx) + Math.abs(dy)) / 10 : Math.sqrt(distanceSquared) / 10;
+    return { ...doc, distanceSquared, distance };
+  }).sort((a, b) => a.distance - b.distance || a.id.localeCompare(b.id))
     .slice(0, k);
   const delivery = neighbors.filter(doc => doc.group === 'E').length;
   const billing = neighbors.length - delivery;
